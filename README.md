@@ -1,6 +1,4 @@
-# @antfu/eslint-config
-
-[![npm](https://img.shields.io/npm/v/@antfu/eslint-config?color=444&label=)](https://npmjs.com/package/@antfu/eslint-config) [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
+# @vinhphm/eslint-config (a @antfu/eslint-config fork)
 
 - Single quotes, no semi
 - Auto fix for formatting (aimed to be used standalone **without** Prettier)
@@ -17,7 +15,7 @@
 - **Style principle**: Minimal for reading, stable for diff, consistent
 
 > [!IMPORTANT]
-> Since v1.0.0, this config is rewritten to the new [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), check the [release note](https://github.com/antfu/eslint-config/releases/tag/v1.0.0) for more details.
+> Since v1.0.0, this config is rewritten to the new [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), check the [release note](https://github.com/vinhphm/eslint-config/releases/tag/v1.0.0) for more details.
 
 ## Usage
 
@@ -26,7 +24,7 @@
 We provided a CLI tool to help you set up your project, or migrate from the legacy config to the new flat config with one command.
 
 ```bash
-npx @antfu/eslint-config@latest
+npx @vinhphm/eslint-config@latest
 ```
 
 ### Manual Install
@@ -34,16 +32,16 @@ npx @antfu/eslint-config@latest
 If you prefer to set up manually:
 
 ```bash
-pnpm i -D eslint @antfu/eslint-config
+pnpm i -D eslint @vinhphm/eslint-config
 ```
 
 And create `eslint.config.mjs` in your project root:
 
 ```js
 // eslint.config.mjs
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu()
+export default preset()
 ```
 
 <details>
@@ -55,12 +53,12 @@ If you still use some configs from the legacy eslintrc format, you can use the [
 
 ```js
 // eslint.config.mjs
-import antfu from '@antfu/eslint-config'
+import preset from '@preset/eslint-config'
 import { FlatCompat } from '@eslint/eslintrc'
 
 const compat = new FlatCompat()
 
-export default antfu(
+export default preset(
   {
     ignores: [],
   },
@@ -152,22 +150,22 @@ Add the following settings to your `.vscode/settings.json`:
 
 Since v1.0, we migrated to [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new). It provides much better organization and composition.
 
-Normally you only need to import the `antfu` preset:
+Normally you only need to import the `vinhphm` preset:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu()
+export default preset()
 ```
 
 And that's it! Or you can configure each integration individually, for example:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu({
+export default preset({
   // Enable stylistic formatting rules
   // stylistic: true,
 
@@ -193,15 +191,15 @@ export default antfu({
 })
 ```
 
-The `antfu` factory function also accepts any number of arbitrary custom config overrides:
+The `preset` factory function also accepts any number of arbitrary custom config overrides:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import preset from '@preset/eslint-config'
 
-export default antfu(
+export default preset(
   {
-    // Configures for antfu's config
+    // Configures for vinhphm's config
   },
 
   // From the second arguments they are ESLint Flat Configs
@@ -243,7 +241,7 @@ import {
   unicorn,
   vue,
   yaml,
-} from '@antfu/eslint-config'
+} from '@vinhphm/eslint-config'
 
 export default combine(
   ignores(),
@@ -265,7 +263,7 @@ export default combine(
 
 </details>
 
-Check out the [configs](https://github.com/antfu/eslint-config/blob/main/src/configs) and [factory](https://github.com/antfu/eslint-config/blob/main/src/factory.ts) for more details.
+Check out the [configs](https://github.com/vinhphm/eslint-config/blob/main/src/configs) and [factory](https://github.com/vinhphm/eslint-config/blob/main/src/factory.ts) for more details.
 
 > Thanks to [sxzz/eslint-config](https://github.com/sxzz/eslint-config) for the inspiration and reference.
 
@@ -308,9 +306,9 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu(
+export default preset(
   {
     vue: true,
     typescript: true
@@ -335,9 +333,9 @@ We also provided the `overrides` options in each integration to make it easier:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu({
+export default preset({
   vue: {
     overrides: {
       'vue/operator-linebreak': ['error', 'before'],
@@ -358,19 +356,19 @@ export default antfu({
 
 ### Config Composer
 
-Since v2.10.0, the factory function `antfu()` returns a [`FlatConfigComposer` object from `eslint-flat-config-utils`](https://github.com/antfu/eslint-flat-config-utils#composer) where you can chain the methods to compose the config even more flexibly.
+Since v2.10.0, the factory function `vinhphm()` returns a [`FlatConfigComposer` object from `eslint-flat-config-utils`](https://github.com/vinhphm/eslint-flat-config-utils#composer) where you can chain the methods to compose the config even more flexibly.
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu()
+export default preset()
   .prepend(
     // some configs before the main config
   )
   // overrides any named configs
   .override(
-    'antfu/imports',
+    'vinhphm/imports',
     {
       rules: {
         'import/order': ['error', { 'newlines-between': 'always' }],
@@ -391,9 +389,9 @@ Vue support is detected automatically by checking if `vue` is installed in your 
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu({
+export default preset({
   vue: true
 })
 ```
@@ -404,9 +402,9 @@ We have limited support for Vue 2 (as it's already [reached EOL](https://v2.vuej
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu({
+export default preset({
   vue: {
     vueVersion: 2
   },
@@ -421,13 +419,13 @@ We provide some optional configs for specific use cases, that we don't include t
 
 #### Formatters
 
-Use external formatters to format files that ESLint cannot handle yet (`.css`, `.html`, etc). Powered by [`eslint-plugin-format`](https://github.com/antfu/eslint-plugin-format).
+Use external formatters to format files that ESLint cannot handle yet (`.css`, `.html`, etc). Powered by [`eslint-plugin-format`](https://github.com/vinhphm/eslint-plugin-format).
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu({
+export default preset({
   formatters: {
     /**
      * Format CSS, LESS, SCSS files, also the `<style>` blocks in Vue
@@ -461,9 +459,9 @@ To enable React support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu({
+export default preset({
   react: true,
 })
 ```
@@ -480,9 +478,9 @@ To enable svelte support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu({
+export default preset({
   svelte: true,
 })
 ```
@@ -499,9 +497,9 @@ To enable astro support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu({
+export default preset({
   astro: true,
 })
 ```
@@ -518,9 +516,9 @@ To enable Solid support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu({
+export default preset({
   solid: true,
 })
 ```
@@ -537,9 +535,9 @@ To enable UnoCSS support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu({
+export default preset({
   unocss: true,
 })
 ```
@@ -577,9 +575,9 @@ You can optionally enable the [type aware rules](https://typescript-eslint.io/li
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu({
+export default preset({
   typescript: {
     tsconfigPath: 'tsconfig.json',
   },
@@ -594,9 +592,9 @@ This is to prevent unused imports from getting removed by the IDE during refacto
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu({
+export default preset({
   isInEditor: false
 })
 ```
@@ -657,16 +655,16 @@ This project follows [Semantic Versioning](https://semver.org/) for releases. Ho
 If you enjoy this code style, and would like to mention it in your project, here is the badge you can use:
 
 ```md
-[![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
+[![code style](https://vinhphm.me/badge-code-style.svg)](https://github.com/vinhphm/eslint-config)
 ```
 
-[![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
+[![code style](https://vinhphm.me/badge-code-style.svg)](https://github.com/vinhphm/eslint-config)
 
 ## FAQ
 
 ### Prettier?
 
-[Why I don't use Prettier](https://antfu.me/posts/why-not-prettier)
+[Why I don't use Prettier](https://vinhphm.me/posts/why-not-prettier)
 
 Well, you can still use Prettier to format files that are not supported well by ESLint yet, such as `.css`, `.html`, etc. See [formatters](#formatters) for more details.
 
@@ -687,9 +685,9 @@ I am a very opinionated person, so as this config. I prefer the top-level functi
 I know they are not necessarily the popular opinions. If you really want to get rid of them, you can disable them with:
 
 ```ts
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu({
+export default preset({
   lessOpinionated: true
 })
 ```
@@ -700,11 +698,11 @@ Sure, you can configure and override rules locally in your project to fit your n
 
 ## Check Also
 
-- [antfu/dotfiles](https://github.com/antfu/dotfiles) - My dotfiles
-- [antfu/vscode-settings](https://github.com/antfu/vscode-settings) - My VS Code settings
-- [antfu/starter-ts](https://github.com/antfu/starter-ts) - My starter template for TypeScript library
-- [antfu/vitesse](https://github.com/antfu/vitesse) - My starter template for Vue & Vite app
+- [vinhphm/dotfiles](https://github.com/vinhphm/dotfiles) - My dotfiles
+- [vinhphm/vscode-settings](https://github.com/vinhphm/vscode-settings) - My VS Code settings
+- [vinhphm/starter-ts](https://github.com/vinhphm/starter-ts) - My starter template for TypeScript library
+- [vinhphm/vitesse](https://github.com/vinhphm/vitesse) - My starter template for Vue & Vite app
 
 ## License
 
-[MIT](./LICENSE) License &copy; 2019-PRESENT [Anthony Fu](https://github.com/antfu)
+[MIT](./LICENSE) License &copy; 2019-PRESENT [Anthony Fu](https://github.com/vinhphm)

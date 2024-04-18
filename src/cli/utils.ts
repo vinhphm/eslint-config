@@ -15,9 +15,9 @@ export function getEslintConfigContent(
   additionalConfigs?: string[],
 ) {
   return `
-import antfu from '@antfu/eslint-config'
+import preset from '@vinhphm/eslint-config'
 
-export default antfu({
+export default preset({
 ${mainConfig}
 }${additionalConfigs?.map(config => `,{\n${config}\n}`)})
 `.trimStart()
