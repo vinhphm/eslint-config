@@ -696,13 +696,6 @@ export default preset({
 
 Sure, you can configure and override rules locally in your project to fit your needs. If that still does not work for you, you can always fork this repo and maintain your own.
 
-## Check Also
-
-- [vinhphm/dotfiles](https://github.com/vinhphm/dotfiles) - My dotfiles
-- [vinhphm/vscode-settings](https://github.com/vinhphm/vscode-settings) - My VS Code settings
-- [vinhphm/starter-ts](https://github.com/vinhphm/starter-ts) - My starter template for TypeScript library
-- [vinhphm/vitesse](https://github.com/vinhphm/vitesse) - My starter template for Vue & Vite app
-
 ## License
 
-[MIT](./LICENSE) License &copy; 2019-PRESENT [Anthony Fu](https://github.com/vinhphm)
+[MIT](./LICENSE) License
