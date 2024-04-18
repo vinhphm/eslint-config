@@ -1,7 +1,7 @@
 {
   "name": "@vinhphm/eslint-config",
   "type": "module",
-  "version": "2.15.0",
+  "version": "2.15.1",
   "packageManager": "pnpm@9.0.2",
   "description": "Vinh's ESLint config",
   "author": "Anthony Fu <anthonyfu117@hotmail.com> (https://github.com/antfu/)",
