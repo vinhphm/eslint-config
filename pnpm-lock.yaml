@@ -142,8 +142,8 @@ importers:
         specifier: ^17.0.32
         version: 17.0.32
       '@unocss/eslint-plugin':
-        specifier: ^0.59.3
-        version: 0.59.3(eslint@9.0.0)(typescript@5.4.5)
+        specifier: ^0.59.4
+        version: 0.59.4(eslint@9.1.1)(typescript@5.4.5)
       '@vinhphm/eslint-config':
         specifier: workspace:*
         version: 'link:'
