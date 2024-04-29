@@ -32,7 +32,7 @@
     "lint": "eslint .",
     "typegen": "esno scripts/typegen.ts",
     "prepack": "nr build",
-    "release": "bumpp && pnpm publish",
+    "release": "bumpp",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks"
